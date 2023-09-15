@@ -12,6 +12,7 @@ describe("<Form />", () => {
   });
 
   it("should render all form fields", () => {
+    // Check input fields together with their associated labels if exists in the document
     expect(screen.getByLabelText("Full Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Date of Birth")).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
@@ -21,6 +22,33 @@ describe("<Form />", () => {
     expect(screen.getByLabelText("Coffee")).toBeInTheDocument();
     expect(screen.getByLabelText("Tea")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
+
+    // Check input fields
+    expect(screen.getByLabelText("Full Name")).toHaveAttribute("type", "text");
+    expect(screen.getByLabelText("Date of Birth")).toHaveAttribute(
+      "type",
+      "date"
+    );
+    expect(screen.getByLabelText("Email")).toHaveAttribute("type", "email");
+    expect(screen.getByLabelText("Mobile Number")).toHaveAttribute(
+      "type",
+      "tel"
+    );
+    expect(
+      screen.getByRole("combobox", { name: "Computer" })
+    ).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: "Mac" })).toHaveValue("mac");
+    expect(screen.getByRole("option", { name: "PC" })).toHaveValue("pc");
+    expect(screen.getByLabelText("Upload File")).toHaveAttribute(
+      "type",
+      "file"
+    );
+    expect(screen.getByLabelText("Coffee")).toHaveAttribute("type", "radio");
+    expect(screen.getByLabelText("Tea")).toHaveAttribute("type", "radio");
+    expect(screen.getByRole("button", { name: "Submit" })).toHaveAttribute(
+      "type",
+      "submit"
+    );
   });
 
   it("should not submit the form if required fields are empty", async () => {

@@ -28,7 +28,7 @@ const Form = ({ handleSubmit }: FormProps) => {
           // Get all form values since we have defined handleSubmit to accept object of type FormValues
           const formData = new FormData(e.target as HTMLFormElement);
           const formValues = Object.fromEntries(
-            formData.entries(),
+            formData.entries()
           ) as FormValues;
           handleSubmit(formValues);
         }}
