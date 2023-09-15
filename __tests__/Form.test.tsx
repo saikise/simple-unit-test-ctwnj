@@ -6,12 +6,10 @@ import userEvent from "@testing-library/user-event";
 describe("<Form />", () => {
   const handleSubmit = jest.fn();
 
-  beforeEach(() => {
+  it("should render all form fields", () => {
     handleSubmit.mockClear();
     render(<Form handleSubmit={handleSubmit} />);
-  });
 
-  it("should render all form fields", () => {
     // Check input fields together with their associated labels if exists in the document
     expect(screen.getByLabelText("Full Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Date of Birth")).toBeInTheDocument();
@@ -52,11 +50,17 @@ describe("<Form />", () => {
   });
 
   it("should not submit the form if required fields are empty", async () => {
+    handleSubmit.mockClear();
+    render(<Form handleSubmit={handleSubmit} />);
+
     await userEvent.click(screen.getByRole("button", { name: "Submit" }));
     expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   it("should submit the form with correct values", async () => {
+    handleSubmit.mockClear();
+    render(<Form handleSubmit={handleSubmit} />);
+
     await userEvent.type(screen.getByLabelText("Full Name"), "John Doe");
     await userEvent.type(screen.getByLabelText("Date of Birth"), "1990-01-01");
     await userEvent.type(screen.getByLabelText("Email"), "johndoe@example.com");

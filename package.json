@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && next lint --dir __tests__",
     "test": "jest --watch",
     "test:ci": "jest --ci"
   },
