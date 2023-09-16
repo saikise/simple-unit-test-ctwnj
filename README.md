@@ -46,19 +46,19 @@ Before you begin, ensure you have the following software installed:
 gh repo create <repo-name> --public --template=saikise/simple-unit-test-ctwnj
 ```
 
-1. Install the dependencies listed in `package.json`.
+2. Install the dependencies listed in `package.json`.
 
 ```bash
 npm i
 ```
 
-1. Play with the app via development server.
+3. Play with the app via development server.
 
 ```bash
 npm run dev
 ```
 
-1. Run the test script via Terminal
+4. Run the test script via Terminal
 
 ```bash
 npm run test:ci
